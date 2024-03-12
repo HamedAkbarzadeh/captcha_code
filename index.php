@@ -31,18 +31,23 @@ $shape->randomCirle($img , $imgW , $imgH , 'light_yellow');
 
 //set text 
 $x = 0;
-$text = randomStr(5);
+$captcha_code = randomStr(5);
 for ($i=0; $i < 5; $i++) { 
     $x +=30;
     $y = rand(30,70);
-    imagestring($img , 5 , $x ,$y ,$text[$i] , $black);
-}
-
+    imagestring($img , 5 , $x ,$y ,$captcha_code[$i] , $black);
+} 
 
 imagepng($img);
 imagedestroy($img);
 
 
+//return captcha code
+function captchaCode(){
+    global $captcha_code;
+
+    return $captcha_code;
+}
 
 //generate text
 function randomStr($count = 1){
